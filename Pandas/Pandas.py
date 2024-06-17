@@ -28,7 +28,8 @@ def indices(df:pd.DataFrame):
 
 
     #''' EX 3
-    # Add a year column to the dataframe
+    # Add a year column to the dataframe (If has yyyy-mm-dd format)
+    #df["year"] = df["date"].dt.year
     df["year"] = df["date"].dt.year
 
     # Pivot flights by country and city vs year
