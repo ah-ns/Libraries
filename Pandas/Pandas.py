@@ -26,8 +26,8 @@ def indices(df:pd.DataFrame):
     '''
 
     # EX 3
-    # Add a year column to the dataframe
-    df["year"] = df["date"].dt.year
+    # Add a year column to the dataframe (If has yyyy-mm-dd format)
+    #df["year"] = df["date"].dt.year
 
     # Pivot flights by country and city vs year
     flights_by_country_city_vs_year = df.pivot_table(values="", index=["country", "city"], columns="year")
@@ -68,7 +68,7 @@ def main():
     print(df)
 
 
-    indices(df)
+    #indices(df)
 
 
     visual(df)
