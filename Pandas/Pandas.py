@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 
@@ -46,6 +47,22 @@ def indices(df:pd.DataFrame):
     print(mean_flights_by_city[mean_flights_by_city == mean_flights_by_city.min()])
 
 
+
+def visual(df:pd.DataFrame):
+    # Subset of state Belgium's flight total with 20 bins
+    df[df["STATE_NAME"] == "Belgium"]["FLT_TOT_1"].hist(alpha=0.5, bins=20)
+
+    # Subset of state Netherlands' flight total with 20 bins
+    df[df["STATE_NAME"] == "Netherlands"]["FLT_TOT_1"].hist(alpha=0.5, bins=20)
+
+    # Add a legend
+    plt.legend(["Belgium", "Netherlands"])
+
+    # Show the plot
+    plt.show()
+
+
+
 def main():
     # Unchanged DataFrame from csv file
     df = pd.read_csv("C:/Users/ahns/Code/Test Programs/datasets/flights.csv")
@@ -53,6 +70,9 @@ def main():
 
 
     indices(df)
+
+
+    visual(df)
 
 
 
