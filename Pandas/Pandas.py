@@ -9,23 +9,25 @@ def indices(df:pd.DataFrame):
 
     :param pd.DataFrame df: Unchanged DataFrame
     """
-    # EX 1
+    #''' EX 1
     df_ind = df.set_index("Pivot Label")
     print(df_ind)
     # Pivot table using .pivot_table
     print((df_ind.loc["Antwerp (EBAW)"]).pivot_table(index=["Pivot Label", "YEAR"], values="FLT_TOT_1"))
+    # '''
 
-    '''
-    # EX 2
+
+    #''' EX 2
     df_ind_2 = df.set_index(["STATE_NAME", "YEAR"])
     print(df_ind_2)
     # List of tuples
     rows_to_keep = [("Belgium", "2019"), ("Belgium", "2020")]
     # Subset for rows to keep NOTE: does not work for rows_to_keep as it should
     print(df_ind_2.loc[rows_to_keep])
-    '''
+    # '''
 
-    # EX 3
+
+    #''' EX 3
     # Add a year column to the dataframe
     df["year"] = df["date"].dt.year
 
@@ -45,10 +47,12 @@ def indices(df:pd.DataFrame):
 
     # Filter for the city that had the lowest mean flights
     print(mean_flights_by_city[mean_flights_by_city == mean_flights_by_city.min()])
+    # '''
 
 
 
 def visual(df:pd.DataFrame):
+    #''' EX 1
     # Subset of state Belgium's flight total with 20 bins
     df[df["STATE_NAME"] == "Belgium"]["FLT_TOT_1"].hist(alpha=0.5, bins=20)
 
@@ -57,6 +61,22 @@ def visual(df:pd.DataFrame):
 
     # Add a legend
     plt.legend(["Belgium", "Netherlands"])
+    # '''
+
+
+    #''' EX 2
+    # From previous step
+    cols_with_missing = ["FLT_ARR_1", "FLT_DEP_1", "FLT_TOT_1"]
+    df[cols_with_missing].hist()
+    plt.show()
+
+    # Fill in missing values with 0
+    avocados_filled = df.fillna(0)
+
+    # Create histograms of the filled columns
+    avocados_filled[cols_with_missing].hist()
+    # '''
+
 
     plt.show()
 
