@@ -26,17 +26,11 @@ def indices(df:pd.DataFrame):
     print(df_ind_2.loc[rows_to_keep])
     # '''
 
-<<<<<<< HEAD
 
     #''' EX 3
     # Add a year column to the dataframe (If has yyyy-mm-dd format)
     #df["year"] = df["date"].dt.year
     df["year"] = df["date"].dt.year
-=======
-    # EX 3
-    # Add a year column to the dataframe (If has yyyy-mm-dd format)
-    #df["year"] = df["date"].dt.year
->>>>>>> bd863ad00e298ccbe1d9c72eae9b78a7aa2e317e
 
     # Pivot flights by country and city vs year
     flights_by_country_city_vs_year = df.pivot_table(values="", index=["country", "city"], columns="year")
