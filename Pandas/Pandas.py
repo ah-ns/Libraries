@@ -17,19 +17,19 @@ def indices(df:pd.DataFrame):
 
     '''
     # EX 2
-    df_ind_2 = df.set_index(["YEAR", "STATE_NAME"])
+    df_ind_2 = df.set_index(["STATE_NAME", "YEAR"])
     print(df_ind_2)
     # List of tuples
-    rows_to_keep = [("2019", "Belgium"), ("2020", "Belgium")]
+    rows_to_keep = [("Belgium", "2019"), ("Belgium", "2020")]
     # Subset for rows to keep NOTE: does not work for rows_to_keep as it should
-    print(df_ind_2.loc[("2022", "Belgium")])
+    print(df_ind_2.loc[rows_to_keep])
     '''
 
     # EX 3
     # Add a year column to the dataframe
     df["year"] = df["date"].dt.year
 
-    # Pivot avg_flights_c by country and city vs year
+    # Pivot flights by country and city vs year
     flights_by_country_city_vs_year = df.pivot_table(values="", index=["country", "city"], columns="year")
 
     # See the result
@@ -58,7 +58,6 @@ def visual(df:pd.DataFrame):
     # Add a legend
     plt.legend(["Belgium", "Netherlands"])
 
-    # Show the plot
     plt.show()
 
 
